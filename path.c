@@ -6,7 +6,7 @@
 /*   By: pengu <pengu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 19:48:38 by pengu             #+#    #+#             */
-/*   Updated: 2023/07/17 20:21:41 by pengu            ###   ########.fr       */
+/*   Updated: 2023/07/17 20:41:39 by pengu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*search_in_path(char *cmd, char **paths)
 	while (paths[j])
 	{
 		full_path = ft_strjoin(ft_strjoin(paths[j], "/"), cmd);
-		if (access(full_path, F_OK != -1))
+		if (access(full_path, F_OK) != -1)
 			break ;
 		free(full_path);
 		full_path = NULL;

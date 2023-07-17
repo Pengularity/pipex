@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wnguyen <wnguyen@student.42.fr>            +#+  +:+       +#+        */
+/*   By: pengu <pengu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 16:35:54 by wnguyen           #+#    #+#             */
-/*   Updated: 2022/12/02 20:54:56 by wnguyen          ###   ########.fr       */
+/*   Updated: 2023/07/17 20:31:15 by pengu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static size_t	ft_count_word(const char *s, char c)
 	return (count);
 }
 
-static void	ft_free(char **s, int i)
+static void	ft_free_split(char **s, int i)
 {
 	while (i-- > 0)
 	{
@@ -60,7 +60,7 @@ int	ft_free_word(char **result, size_t i)
 {
 	if (!result)
 	{
-		ft_free(result, i);
+		ft_free_split(result, i);
 		return (0);
 	}
 	return (1);

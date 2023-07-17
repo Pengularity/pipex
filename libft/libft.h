@@ -6,7 +6,7 @@
 /*   By: pengu <pengu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 21:10:09 by wnguyen           #+#    #+#             */
-/*   Updated: 2023/07/17 18:21:47 by pengu            ###   ########.fr       */
+/*   Updated: 2023/07/17 20:29:21 by pengu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int			ft_min(int a, int b);
 int			ft_max(int a, int b);
 int			ft_abs(int a);
-void		ft_free(char *str);
+void		ft_free(char **strs);
 
 // Get next line
 

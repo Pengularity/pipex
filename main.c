@@ -6,7 +6,7 @@
 /*   By: pengu <pengu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:04:06 by pengu             #+#    #+#             */
-/*   Updated: 2023/07/17 20:20:29 by pengu            ###   ########.fr       */
+/*   Updated: 2023/07/17 20:46:52 by pengu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	exec_cmd1(char **av, char **env, int fdin, int *fd)
 	int		pid;
 	char	*cmd1_path;
 	char	**cmd1;
+	char	**split;
 
 	pid = fork();
 	if (pid < 0)
@@ -29,11 +30,12 @@ int	exec_cmd1(char **av, char **env, int fdin, int *fd)
 		dup2(fdin, STDIN_FILENO);
 		dup2(fd[1], STDOUT_FILENO);
 		close(fd[0]);
-		cmd1_path = get_cmd_path(av[2], env);
+		split = ft_split(av[2], ' ');
+		cmd1_path = get_cmd_path(split[0], env);
 		if (cmd1_path == NULL)
 			(perror("Command 1 not found"), exit(EXIT_FAILURE));
 		cmd1 = ft_split(cmd1_path, ' ');
-		execve(cmd1[0], cmd1, env);
+		execve(cmd1[0], split, env);
 		(perror("execve"), ft_free(cmd1), free(cmd1_path), exit(EXIT_FAILURE));
 	}
 	return (pid);
@@ -44,6 +46,7 @@ int	exec_cmd2(char **av, char **env, int fdout, int *fd)
 	int		pid;
 	char	*cmd2_path;
 	char	**cmd2;
+	char	**split;
 
 	pid = fork();
 	if (pid < 0)
@@ -56,11 +59,12 @@ int	exec_cmd2(char **av, char **env, int fdout, int *fd)
 		dup2(fd[0], STDIN_FILENO);
 		dup2(fdout, STDOUT_FILENO);
 		close(fd[1]);
-		cmd2_path = get_cmd_path(av[3], env);
+		split = ft_split(av[3], ' ');
+		cmd2_path = get_cmd_path(split[0], env);
 		if (cmd2_path == NULL)
 			(perror("Command 2 not found"), exit(EXIT_FAILURE));
 		cmd2 = ft_split(cmd2_path, ' ');
-		execve(cmd2[0], cmd2, env);
+		execve(cmd2[0], split, env);
 		(perror("execve"), ft_free(cmd2), free(cmd2_path), exit(EXIT_FAILURE));
 	}
 	return (pid);
@@ -82,8 +86,6 @@ void	pipex(int fdin, int fdout, char **av, char **env)
 	waitpid(pid1, &status, 0);
 	waitpid(pid2, &status, 0);
 }
-
-
 
 int	main(int ac, char **av, char **env)
 {

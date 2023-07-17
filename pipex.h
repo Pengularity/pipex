@@ -6,7 +6,7 @@
 /*   By: pengu <pengu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 18:06:58 by pengu             #+#    #+#             */
-/*   Updated: 2023/07/17 18:11:33 by pengu            ###   ########.fr       */
+/*   Updated: 2023/07/17 20:26:55 by pengu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,12 @@
 # include <sys/stat.h>
 # include <sys/wait.h>
 # include "libft/libft.h"
+
+char    *search_in_path(char *cmd, char **paths);
+char    *get_cmd_path(char *cmd, char **envp);
+
+int     exec_cmd1(char **av, char **env, int fdin, int *fd);
+int     exec_cmd2(char **av, char **env, int fdout, int *fd);
+void    pipex(int fdin, int fdout, char **av, char **env);
 
 #endif

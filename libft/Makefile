@@ -6,7 +6,7 @@
 #    By: pengu <pengu@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/15 16:26:14 by wnguyen           #+#    #+#              #
-#    Updated: 2023/06/15 23:50:53 by pengu            ###   ########.fr        #
+#    Updated: 2023/07/17 20:36:42 by pengu            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,6 +59,7 @@ SRC = \
 	./ft_putstr_fd.c \
 	./ft_putendl_fd.c \
 	./ft_putnbr_fd.c \
+	./ft_free.c
 
 SRC_BONUS = \
 	./ft_lstnew.c \
